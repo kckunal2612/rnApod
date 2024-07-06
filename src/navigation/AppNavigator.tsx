@@ -3,8 +3,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import PictureOfTheDayScreen from '../screens/PictureOfTheDay/PictureOfTheDayScreen';
-import GalleryScreen from '../screens/GalleryScreen/GalleryScreen';
+
+import { GalleryScreen } from '../screens/GalleryScreen/GalleryScreen';
+import { PictureOfTheDayScreen } from '../screens/PictureOfTheDay/PictureOfTheDayScreen';
 
 const Tab = createBottomTabNavigator();
 

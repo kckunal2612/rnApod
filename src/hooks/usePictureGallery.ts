@@ -1,24 +1,38 @@
+import { useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { QueryKeys } from '../constants/queryKeys';
-import { useQuery } from '@tanstack/react-query';
+import { calculateDateRange } from '../utils/dateUtils';
+import { PictureOfTheDay } from '../types';
 
-const API_URL = 'https://api.nasa.gov/planetary';
-const API_KEY = process.env.NASA_API_KEY;
+// Helper function to fetch APOD images
+const fetchAPODImages = async ({ pageParam = '' }) => {
+  const API_KEY = process.env.NASA_API_KEY;
+  const { startDateStr, endDateStr, nextPageParam } =
+    calculateDateRange(pageParam);
 
-export const fetchGallery = async () => {
-  const response = await axios.get(`${API_URL}/apod`, {
-    params: {
-      api_key: API_KEY,
-      count: 10, // Fetch 10 random images for the gallery
-    },
-  });
-  return response.data;
+  const requestUrl = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&start_date=${startDateStr}&end_date=${endDateStr}`;
+
+  // Fetch data from NASA APOD API
+  const response = await axios.get(requestUrl);
+
+  const data: PictureOfTheDay[] = response?.data;
+  const reversedList = data?.reverse();
+
+  return {
+    data: reversedList,
+    nextPageParam,
+  };
 };
 
-export const useGalleryQuery = () => {
-  return useQuery({
+// Custom hook to use the infinite query
+const usePictureGallery = () => {
+  return useInfiniteQuery({
     queryKey: [QueryKeys.GALLERY],
-    queryFn: fetchGallery,
+    queryFn: fetchAPODImages,
+    initialPageParam: undefined,
+    getNextPageParam: (lastPage) => lastPage.nextPageParam,
     staleTime: Infinity,
   });
 };
+
+export { usePictureGallery };

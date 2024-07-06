@@ -33,4 +33,4 @@ const PictureOfTheDayScreen: React.FC = () => {
   );
 };
 
-export default PictureOfTheDayScreen;
+export { PictureOfTheDayScreen };
