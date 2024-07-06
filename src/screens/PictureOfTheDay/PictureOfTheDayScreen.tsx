@@ -2,10 +2,11 @@
 
 import React from 'react';
 import { View, ActivityIndicator, Text } from 'react-native';
-import { usePictureOfTheDay } from '../../hooks/usePictureOfTheDay';
+import { usePictureOfTheDay } from '../../api/usePictureOfTheDay';
 import styles from './PictureOfTheDayScreen.styles';
 import ERROR_MESSAGES from '../../constants/errors';
 import PictureCard from '../../components/PictureCard';
+import { PageHeading } from '../../components/PageHeading';
 
 const PictureOfTheDayScreen: React.FC = () => {
   const { data, error, isLoading } = usePictureOfTheDay();
@@ -28,6 +29,7 @@ const PictureOfTheDayScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <PageHeading title={'Picture of the Day'} />
       {data && <PictureCard picture={data} />}
     </View>
   );

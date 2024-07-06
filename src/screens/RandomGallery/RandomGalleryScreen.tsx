@@ -1,9 +1,10 @@
 import React from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import { FlashList } from '@shopify/flash-list';
 import { GalleryCard } from '../../components/GalleryCard';
-import { useRandomGallery } from '../../hooks/useRandomGallery';
+import { useRandomGallery } from '../../api/useRandomGallery';
+import { PageHeading } from '../../components/PageHeading';
 
 const RandomGalleryScreen = () => {
   const { isFetching, data, refetch } = useRandomGallery();
@@ -20,6 +21,8 @@ const RandomGalleryScreen = () => {
 
   return (
     <View style={styles.container}>
+      <PageHeading title={'Random'} />
+      <Text style={styles.subText}>{'Pull to refresh'}</Text>
       <FlashList
         data={data}
         onRefresh={refetch}
@@ -37,8 +40,12 @@ const RandomGalleryScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 5,
-    paddingTop: 10,
+  },
+  subText: {
+    fontSize: 13,
+    color: 'grey',
+    fontStyle: 'italic',
+    padding: 5,
   },
   loader: {
     marginTop: 10,

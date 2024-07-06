@@ -3,6 +3,7 @@ import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { APOD_ABOUT } from '../../constants/userFacingStrings';
+import { PageHeading } from '../../components/PageHeading';
 
 const getStyles = (theme: Theme) => {
   const styles = StyleSheet.create({
@@ -30,10 +31,13 @@ const AboutScreen = (): JSX.Element => {
   const styles = getStyles(navTheme);
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.aboutText}>{APOD_ABOUT}</Text>
-      <View style={styles.verticalMargin} />
-    </ScrollView>
+    <>
+      <PageHeading title={'About'} />
+      <ScrollView style={styles.container}>
+        <Text style={styles.aboutText}>{APOD_ABOUT}</Text>
+        <View style={styles.verticalMargin} />
+      </ScrollView>
+    </>
   );
 };
 

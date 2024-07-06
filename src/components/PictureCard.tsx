@@ -3,6 +3,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 import { PictureOfTheDay } from '../types';
+import { formatDate } from '../utils/dateUtils';
 
 interface PictureCardProps {
   picture: PictureOfTheDay;
@@ -14,7 +15,7 @@ const PictureCard: React.FC<PictureCardProps> = ({ picture }) => {
       <Image source={{ uri: picture.url }} style={styles.image} />
       <View style={styles.textContainer}>
         <Text style={styles.title}>{picture.title}</Text>
-        <Text style={styles.date}>{picture.date}</Text>
+        <Text style={styles.date}>{formatDate(picture.date)}</Text>
         <Text style={styles.explanation}>{picture.explanation}</Text>
       </View>
     </ScrollView>
@@ -35,14 +36,14 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   title: {
-    fontSize: 24,
+    fontSize: 21,
     fontWeight: 'bold',
     marginBottom: 8,
     color: 'white',
   },
   date: {
     fontSize: 18,
-    color: 'white',
+    color: 'grey',
     marginBottom: 16,
   },
   explanation: {

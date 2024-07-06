@@ -34,10 +34,26 @@ const AppNavigator: React.FC = () => {
             );
           },
         })}>
-        <Tab.Screen name={Routes.Home} component={PictureOfTheDayScreen} />
-        <Tab.Screen name={Routes.Gallery} component={GalleryScreen} />
-        <Tab.Screen name={Routes.Random} component={RandomGalleryScreen} />
-        <Tab.Screen name={Routes.About} component={AboutScreen} />
+        <Tab.Screen
+          name={Routes.Home}
+          options={{ headerShown: false }}
+          component={PictureOfTheDayScreen}
+        />
+        <Tab.Screen
+          name={Routes.Gallery}
+          options={{ headerShown: false }}
+          component={GalleryScreen}
+        />
+        <Tab.Screen
+          name={Routes.Random}
+          options={{ headerShown: false }}
+          component={RandomGalleryScreen}
+        />
+        <Tab.Screen
+          name={Routes.About}
+          options={{ headerShown: false }}
+          component={AboutScreen}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
