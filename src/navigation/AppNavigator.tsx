@@ -3,22 +3,26 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import Icon from 'react-native-ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
+import { AboutScreen } from '../screens/AboutScreen/AboutScreen';
 import { GalleryScreen } from '../screens/GalleryScreen/GalleryScreen';
 import { PictureOfTheDayScreen } from '../screens/PictureOfTheDay/PictureOfTheDayScreen';
 import { RandomGalleryScreen } from '../screens/RandomGallery/RandomGalleryScreen';
 import { Routes } from './routes';
-import { AboutScreen } from '../screens/AboutScreen/AboutScreen';
 
 const Tab = createBottomTabNavigator();
 
-const getIconName = (route: any): string | undefined => {
-  let iconName;
+const getIconName = (route: any): string => {
+  let iconName = 'home';
   if (route.name === Routes.Home) {
-    iconName = 'planet';
+    iconName = 'rocket';
   } else if (route.name === Routes.Gallery) {
-    iconName = 'list';
+    iconName = 'calendar-plus-o';
+  } else if (route.name === Routes.Random) {
+    iconName = 'refresh';
+  } else if (route.name === Routes.About) {
+    iconName = 'question';
   }
   return iconName;
 };
@@ -28,9 +32,10 @@ const AppNavigator: React.FC = () => {
     <NavigationContainer theme={DarkTheme}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ color, size }) => {
+          tabBarIcon: ({ focused, color, size }) => {
+            console.log({ focused, color, size, route });
             return (
-              <Icon name={getIconName(route.name)} size={size} color={'red'} />
+              <Icon name={getIconName(route)} size={25} color={color} />
             );
           },
         })}>
