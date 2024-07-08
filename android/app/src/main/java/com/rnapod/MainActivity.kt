@@ -1,4 +1,4 @@
-package com.rnapod
+package com.kunal.myapps.astronomypictureofthedayapod2
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

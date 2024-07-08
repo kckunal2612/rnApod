@@ -1,4 +1,4 @@
-package com.rnapod
+package com.kunal.myapps.astronomypictureofthedayapod2
 
 import android.app.Application
 import com.facebook.react.PackageList

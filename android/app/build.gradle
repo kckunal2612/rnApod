@@ -74,13 +74,13 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.rnapod"
+    namespace "com.kunal.myapps.astronomypictureofthedayapod2"
     defaultConfig {
-        applicationId "com.rnapod"
+        applicationId "com.kunal.myapps.astronomypictureofthedayapod2"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 500
+        versionName "2.0.0"
     }
     signingConfigs {
         debug {
@@ -115,4 +115,5 @@ dependencies {
     }
 }
 
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
