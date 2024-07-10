@@ -1,16 +1,15 @@
 import React from 'react';
-import {Provider} from 'react-redux';
-import {persistedStore, store} from './src/redux/store/store';
-import AppNavigator from './src/navigation/AppNavigator';
-import {PersistGate} from 'redux-persist/integration/react';
 
-const App = () => {
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import AppNavigator from './src/navigation/AppNavigator';
+
+const queryClient = new QueryClient();
+
+const App: React.FC = () => {
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistedStore}>
-        <AppNavigator />
-      </PersistGate>
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <AppNavigator />
+    </QueryClientProvider>
   );
 };
 

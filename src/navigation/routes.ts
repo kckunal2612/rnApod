@@ -1,8 +1,6 @@
 export const Routes = {
-  MainTab: 'Home',
   Home: 'Home',
   Gallery: 'Gallery',
+  Random: 'Random',
   About: 'About',
-  Details: 'Details',
-  FullScreenImage: 'FullScreenImage',
 };
